@@ -66,6 +66,9 @@ def download_wiki(subreddit, page="index", wiki_pages=None):
     except requests.exceptions.HTTPError as e:
         print(e)
         print(f"Can't download page: {page}")
+    except requests.exceptions.ConnectionError as e:
+        print(e)
+        print("No internet connection")
 
     if response:
         soup = BeautifulSoup(response.text, "html.parser")
